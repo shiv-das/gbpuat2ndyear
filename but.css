@@ -6,9 +6,9 @@
   transition-duration: 400ms;
 }
 
-html {
-  width: 100vw;
-  height: 100vh;
+img {
+  width: var(--thumbnail-width);
+  height: var(--thumbnail-width);
 }
 
 body {
@@ -16,8 +16,10 @@ body {
   padding: 0;
   width: 100vw;
   height: 100vh;
+  max-width: 100%;
+  overflow-y: hidden;
   position: absolute;
-  /*background-image: url(tech.jpg);*/
+  background: linear-gradient(rgba(255,255,255,.8), rgba(255,255,255,.8)), url("https://www.wallpaperup.com/uploads/wallpapers/2014/09/26/456700/2ebac5c069f663ca95fcf3977d2fba3e.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -29,21 +31,37 @@ body {
 }
 
 .element-container {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: row;
-  align-items: stretch;
+  align-items: center;
   justify-content: center;
+  gap: 20px;
+  margin: 20px;
 }
 
 .element-column {
   flex: 1;
+  padding: 40px;
   transition-duration: 400ms;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center !important;
   gap: 20px;
+  border-radius: 4px;
+  background: #fff;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.element-column:hover {
+  background: #eee;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.element-column:active {
+  background: #ddd;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
 
 ul {
@@ -64,64 +82,10 @@ ul li {
   transform: rotate(0deg) skew(0deg);
 }
 
-ul li span {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: var(--thumbnail-width);
-  height: var(--thumbnail-width);
-  background: teal;
-  transition: 0.5s;
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
-  font-size: 30px !important;
-}
 
-ul li:hover span:nth-child(5) {
-  transform: translate(40px, -40px);
-  opacity: 1;
-}
-
-ul li:hover span:nth-child(4) {
-  transform: translate(30px, -30px);
-  opacity: 0.8;
-}
-
-ul li:hover span:nth-child(3) {
-  transform: translate(20px, -20px);
-  opacity: 0.6;
-}
-
-ul li:hover span:nth-child(2) {
-  transform: translate(10px, -10px);
-  opacity: 0.4;
-}
-
-ul li:hover span:nth-child(1) {
-  transform: translate(0, 0);
-  opacity: 0.2;
-}
-
-.cl {
-  height: 440px;
-}
-
-.stu {
-  height: var(--thumbnail-width);
-  width: var(--thumbnail-width);
-  content: url(./images/log2.jpg);
-}
-.teacher {
-  content: url(./images/tea.jpg);
-}
-.reg {
-  content: url(./images/reg.jpg);
-}
 .captions {
   text-align: center;
-  font-family: 'Times New Roman', Times, serif;
+  font-family: "Roboto", sans-serif;
   font-size: large;
   transition-duration: 400ms;
 }
@@ -129,5 +93,15 @@ ul li:hover span:nth-child(1) {
 @media screen and (max-width: 800px) {
   .element-container {
     flex-direction: column;
+    height: unset;
+  }
+
+  .element-column {
+    width: calc(100% - 80px);
+  }
+
+  body {
+    overflow-y: scroll;
+
   }
 }
